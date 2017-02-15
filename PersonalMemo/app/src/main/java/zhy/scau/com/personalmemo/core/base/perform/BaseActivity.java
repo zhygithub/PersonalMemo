@@ -9,4 +9,6 @@ import android.support.v4.app.FragmentActivity;
  */
 
 public class BaseActivity extends FragmentActivity {
+
+    private String test ="this is a patch";
 }

@@ -1,0 +1,11 @@
+diff --git a/PersonalMemo/app/src/main/java/zhy/scau/com/personalmemo/core/base/perform/BaseActivity.java b/PersonalMemo/app/src/main/java/zhy/scau/com/personalmemo/core/base/perform/BaseActivity.java
+index ea37aeb..9f174ea 100644
+--- a/PersonalMemo/app/src/main/java/zhy/scau/com/personalmemo/core/base/perform/BaseActivity.java
++++ b/PersonalMemo/app/src/main/java/zhy/scau/com/personalmemo/core/base/perform/BaseActivity.java
+@@ -9,4 +9,6 @@ import android.support.v4.app.FragmentActivity;
+  */
+ 
+ public class BaseActivity extends FragmentActivity {
++
++    private String test ="this is a patch";
+ }

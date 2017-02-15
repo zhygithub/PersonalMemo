@@ -11,10 +11,59 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        sign {
+            // 默认local.properties不加入版本控制中
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file('local.properties').newDataInputStream())
+            def keystore = properties.getProperty("KEY_STORE")
+            def storepasswd = properties.getProperty("KEY_STORE_PASSWORD")
+            def alias = properties.getProperty("KEY_ALIAS")
+            def aliaspasswd = properties.getProperty("KEY_ALIAS_PASSWORD")
+
+            storeFile file(keystore)
+            storePassword(storepasswd)
+            keyAlias alias
+            keyPassword aliaspasswd
+        }
+    }
+
+
     buildTypes {
+        debug {
+            // 为包名添加后缀，使调试与正式包可以并存
+            applicationIdSuffix ".debug"
+        }
+
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 读取设置的签名文件
+            signingConfig signingConfigs.sign
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles 'proguard-rules.pro'
+        }
+
+        // 对资源文件进行混淆
+        android.applicationVariants.all { variant ->
+            variant.assemble.doLast {
+                String outname = "";
+                variant.productFlavors.each { productFlavor ->
+                    println("productFlavor:" + productFlavor.name);
+                    outname += productFlavor.name;
+                }
+
+                println("buildType:" + variant.buildType.name);
+                // 是正式版本才进行资源混淆
+                if (variant.buildType.name != 'release') {
+                    return;
+                }
+                variant.outputs.each { output ->
+                    // 注释以下一行可以取消自动资源混淆的方法
+                    runResourceGuard(output.outputFile, outname);
+                }
+
+            }
         }
     }
 }
@@ -26,4 +75,14 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
+    // 权限控制
+    compile 'com.lovedise:permissiongen:0.0.6'
+    // eventbus
+    compile 'org.greenrobot:eventbus:3.0.0'
+    // 网络库
+    compile project(path: ':lib_net')
+    // 图片库
+    compile project(path: ':lib_img')
+    // 工具库
+    compile project(path: ':lib_utils')
 }
