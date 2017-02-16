@@ -1,7 +1,9 @@
-package zhy.scau.com.personalmemo;
+package zhy.scau.com.personalmemo.bussiness.perform;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import zhy.scau.com.personalmemo.R;
 
 
 public class MainActivity extends AppCompatActivity {
