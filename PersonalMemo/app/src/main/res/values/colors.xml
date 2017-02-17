@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    
+    <color name="xj_color_main_blue">#402785</color>
+    <color name="xj_color_seconde_blue">#5f4e9e</color>
+    <color name="xj_color_third_yellow">#fafb97</color>
+    <color name="xj_color_forth_yellow">#fcc97b</color>
+
 </resources>
