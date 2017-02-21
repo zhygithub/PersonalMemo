@@ -1,5 +1,9 @@
 <resources>
 
+    <style name="NormalBaseTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->

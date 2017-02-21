@@ -9,4 +9,13 @@
     <color name="xj_color_third_yellow">#fafb97</color>
     <color name="xj_color_forth_yellow">#fcc97b</color>
 
+    <color name="xj_color_white">#ffffff</color>
+    <color name="xj_color_gray_eeeeee">#eeeeee</color>
+    <color name="xj_color_gray_cccccc">#cccccc</color>
+    <color name="xj_color_gray_999999">#999999</color>
+    <color name="xj_color_gray_666666">#666666</color>
+    <color name="xj_color_gray_333333">#333333</color>
+    <color name="xj_color_black">#000000</color>
+
+
 </resources>
