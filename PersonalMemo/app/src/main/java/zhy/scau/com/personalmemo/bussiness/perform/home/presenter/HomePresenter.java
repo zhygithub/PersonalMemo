@@ -3,6 +3,7 @@ package zhy.scau.com.personalmemo.bussiness.perform.home.presenter;
 import android.support.annotation.NonNull;
 
 import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IHomeContract;
+import zhy.scau.com.personalmemo.bussiness.perform.home.menu.OnMenuItemClickListener;
 import zhy.scau.com.personalmemo.core.mvp.IHostControl;
 import zhy.scau.com.personalmemo.core.mvp.common.presenter.CommonPresenter;
 import zhy.scau.com.personalmemo.core.mvp.common.view.CommonView;
@@ -36,6 +37,21 @@ public class HomePresenter extends CommonPresenter<IHomeContract.IHomeView> impl
 
     @Override
     public void addItem() {
+
+    }
+
+    @Override
+    public void addMItem(String itemName) {
+
+    }
+
+    @Override
+    public void removeItem(int position) {
+
+    }
+
+    @Override
+    public void setOnItemClickListener(OnMenuItemClickListener listener) {
 
     }
 }

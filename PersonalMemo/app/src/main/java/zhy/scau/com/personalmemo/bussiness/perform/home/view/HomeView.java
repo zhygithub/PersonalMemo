@@ -3,10 +3,18 @@ package zhy.scau.com.personalmemo.bussiness.perform.home.view;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
+import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import zhy.scau.com.personalmemo.R;
 import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IHomeContract;
+import zhy.scau.com.personalmemo.bussiness.perform.home.menu.MenuAdapter;
 import zhy.scau.com.personalmemo.bussiness.perform.home.presenter.HomePresenter;
 import zhy.scau.com.personalmemo.bussiness.perform.widget.navigation.INavigation;
 import zhy.scau.com.personalmemo.bussiness.perform.widget.navigation.OnNavigationMenuItemClickListener;
@@ -27,6 +35,18 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
      * 导航栏
      */
     private INavigation mTpBar;
+
+
+    /**
+     * 菜单列表
+     */
+    private ListView mLvItems;
+
+
+    /**
+     * 菜单平台
+     */
+    private FlowingDrawer mFdMenuPlatform;
 
 
     public HomeView(@NonNull IHostControl control) {
@@ -52,7 +72,7 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
         mTpBar.setLeftBtnEvent(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openMenu();
             }
         });
         String[] menuNames = new String[]{
@@ -69,10 +89,35 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
                 Toast.makeText(getActivityContext(), "position = "+position, Toast.LENGTH_SHORT).show();
             }
         });
+
+        initMenu(root);
+    }
+
+    private void initMenu(View root) {
+        mFdMenuPlatform = (FlowingDrawer) root.findViewById(R.id.drawerlayout);
+        mFdMenuPlatform.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
+
+        mLvItems = (ListView) root.findViewById(R.id.xj_menu_item_list);
+
     }
 
     @Override
     public void openMenu() {
-        mTpBar.show();
+        mFdMenuPlatform.openMenu();
+    }
+
+    @Override
+    public void closeMenufh() {
+        mFdMenuPlatform.closeMenu();
+    }
+
+    @Override
+    public void updateMenuData(List<String> names) {
+        List<String> l = new ArrayList<>();
+        l.add("1");
+        l.add("22");
+        l.add("333");
+        l.add("4444");
+        mLvItems.setAdapter(new MenuAdapter(getActivityContext(), l));
     }
 }
