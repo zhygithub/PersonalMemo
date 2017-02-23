@@ -2,6 +2,8 @@ package zhy.scau.com.personalmemo.bussiness.perform.home.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -12,9 +14,11 @@ import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import java.util.ArrayList;
 import java.util.List;
 
+import zhy.scau.com.mylibrarylib_utils.ui.ToastUtils;
 import zhy.scau.com.personalmemo.R;
 import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IHomeContract;
-import zhy.scau.com.personalmemo.bussiness.perform.home.menu.MenuAdapter;
+import zhy.scau.com.personalmemo.bussiness.perform.home.adapter.MenuAdapter;
+import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IItemsListContract;
 import zhy.scau.com.personalmemo.bussiness.perform.home.presenter.HomePresenter;
 import zhy.scau.com.personalmemo.bussiness.perform.widget.navigation.INavigation;
 import zhy.scau.com.personalmemo.bussiness.perform.widget.navigation.OnNavigationMenuItemClickListener;
@@ -48,9 +52,16 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
      */
     private FlowingDrawer mFdMenuPlatform;
 
+    /**
+     * 增加爱备忘按钮
+     */
+    private FloatingActionButton mFabAdd;
+
+
 
     public HomeView(@NonNull IHostControl control) {
         super(control);
+        getDelegateManager().addItems(new ItemListView(getHostControl()));
     }
 
     @Override
@@ -62,6 +73,15 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
     public void onCreate(Bundle savedInstanceState, View root) {
         super.onCreate(savedInstanceState, root);
 
+        initNavigation(root);
+
+        initMenu(root);
+
+        initAddBtn(root);
+
+    }
+
+    private void initNavigation(View root){
         mTpBar = (INavigation) root.findViewById(R.id.xj_main_activity_navigation);
         mTpBar.setConfig(new XJDefaultNavigationConfig(getActivityContext()));
 
@@ -87,10 +107,10 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
             @Override
             public void onNavigationMenuItemClick(View view, int position) {
                 Toast.makeText(getActivityContext(), "position = "+position, Toast.LENGTH_SHORT).show();
+                Snackbar.make(view, "haha", Snackbar.LENGTH_SHORT)
+                    .setAction("click" , null).show();
             }
         });
-
-        initMenu(root);
     }
 
     private void initMenu(View root) {
@@ -100,6 +120,18 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
         mLvItems = (ListView) root.findViewById(R.id.xj_menu_item_list);
 
     }
+
+    private void initAddBtn(View root) {
+        mFabAdd = (FloatingActionButton) root.findViewById(R.id.xj_main_activity_fab);
+
+        mFabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((IItemsListContract.IItemsListPresenter)(getDelegateManager().getPresenter(IItemsListContract.IItemsListPresenter.class))).addMemo();
+            }
+        });
+    }
+
 
     @Override
     public void openMenu() {
@@ -119,5 +151,16 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
         l.add("333");
         l.add("4444");
         mLvItems.setAdapter(new MenuAdapter(getActivityContext(), l));
+    }
+
+    @Override
+    public void toastBySnackbar(String text, String actionName, View.OnClickListener event) {
+        if(mFabAdd != null){
+            Snackbar.make(mFabAdd, text, Snackbar.LENGTH_SHORT)
+                .setAction(actionName,event)
+                .show();
+        }else{
+            ToastUtils.toast(text);
+        }
     }
 }

@@ -3,7 +3,9 @@ package zhy.scau.com.personalmemo.core.application;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
+import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

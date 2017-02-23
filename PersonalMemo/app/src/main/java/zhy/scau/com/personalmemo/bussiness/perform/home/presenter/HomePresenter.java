@@ -1,6 +1,7 @@
 package zhy.scau.com.personalmemo.bussiness.perform.home.presenter;
 
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IHomeContract;
 import zhy.scau.com.personalmemo.bussiness.perform.home.menu.OnMenuItemClickListener;
@@ -53,5 +54,10 @@ public class HomePresenter extends CommonPresenter<IHomeContract.IHomeView> impl
     @Override
     public void setOnItemClickListener(OnMenuItemClickListener listener) {
 
+    }
+
+    @Override
+    public void toastBySnackbar(String text, String actionName, View.OnClickListener event) {
+        getView().toastBySnackbar(text, actionName, event);
     }
 }

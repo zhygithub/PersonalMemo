@@ -17,6 +17,7 @@ import android.widget.Toast;
 import zhy.scau.com.lib_img.IImageLoader;
 import zhy.scau.com.mylibrarylib_utils.orm.SharePreferenceUtils;
 import zhy.scau.com.mylibrarylib_utils.status_bar.StatusBarFontHelper;
+import zhy.scau.com.mylibrarylib_utils.ui.ToastUtils;
 import zhy.scau.com.personalmemo.R;
 import zhy.scau.com.personalmemo.core.application.ApplicationControl;
 import zhy.scau.com.personalmemo.core.application.IApplicationControl;

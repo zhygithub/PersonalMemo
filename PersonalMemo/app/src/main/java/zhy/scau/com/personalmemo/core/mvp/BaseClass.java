@@ -102,6 +102,8 @@ public class BaseClass implements IHostStatus, IApplicationControl, IHostControl
         return ApplicationControl.INSTANCE.getSharePreference();
     }
 
+
+
     @NonNull
     @Override
     public BaseConstant getConstantInfo() {

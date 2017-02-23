@@ -1,5 +1,7 @@
 package zhy.scau.com.personalmemo.bussiness.perform.home.contract;
 
+import android.view.View;
+
 import java.util.List;
 
 import zhy.scau.com.personalmemo.bussiness.perform.home.menu.OnMenuItemClickListener;
@@ -34,6 +36,14 @@ public interface IHomeContract  extends ICommonContract{
          * @param names
          */
         void updateMenuData(List<String> names);
+
+        /**
+         * toast
+         * @param text
+         * @param actionName
+         * @param event
+         */
+        void toastBySnackbar(String text, String actionName, View.OnClickListener event);
 
     }
 
@@ -81,6 +91,14 @@ public interface IHomeContract  extends ICommonContract{
          * @param listener
          */
         void setOnItemClickListener(OnMenuItemClickListener listener);
+
+        /**
+         * toast
+         * @param text
+         * @param actionName
+         * @param event
+         */
+        void toastBySnackbar(String text, String actionName, View.OnClickListener event);
 
     }
 }

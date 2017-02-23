@@ -2,6 +2,7 @@ package zhy.scau.com.personalmemo.core.application;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import zhy.scau.com.mylibrarylib_utils.orm.SharePreferenceUtils;
 import zhy.scau.com.personalmemo.core.config.BaseConstant;
@@ -40,6 +41,7 @@ public interface IApplicationControl {
      */
     @NonNull
     SharePreferenceUtils getSharePreference();
+
 
     /**
      * 获取应用关联的常量信息
