@@ -1,10 +1,12 @@
 package zhy.scau.com.personalmemo.bussiness.perform.home.presenter;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IHomeContract;
 import zhy.scau.com.personalmemo.bussiness.perform.home.menu.OnMenuItemClickListener;
+import zhy.scau.com.personalmemo.bussiness.perform.test.KotlinTestActivity;
 import zhy.scau.com.personalmemo.core.mvp.IHostControl;
 import zhy.scau.com.personalmemo.core.mvp.common.presenter.CommonPresenter;
 import zhy.scau.com.personalmemo.core.mvp.common.view.CommonView;
@@ -23,7 +25,7 @@ public class HomePresenter extends CommonPresenter<IHomeContract.IHomeView> impl
 
     @Override
     public void tomatoTime() {
-
+        getActivityContext().startActivity(new Intent(getActivityContext(), KotlinTestActivity.class));
     }
 
     @Override

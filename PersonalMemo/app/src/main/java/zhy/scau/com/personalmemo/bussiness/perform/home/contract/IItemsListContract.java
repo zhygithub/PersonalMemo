@@ -3,6 +3,7 @@ package zhy.scau.com.personalmemo.bussiness.perform.home.contract;
 import java.util.List;
 
 import zhy.scau.com.personalmemo.bussiness.model.MemoItem;
+import zhy.scau.com.personalmemo.bussiness.perform.home.enums.ItemListShowType;
 import zhy.scau.com.personalmemo.core.mvp.common.contract.ICommonContract;
 
 /**
@@ -42,6 +43,12 @@ public interface IItemsListContract extends ICommonContract {
          */
         void removeItem(int position, List<MemoItem> data);
 
+        /**
+         * 改变列表展示的方式
+         * @param showType
+         */
+        void changeShowType(ItemListShowType showType);
+
     }
 
     interface IItemsListPresenter extends ICommonPresenter{
@@ -56,6 +63,8 @@ public interface IItemsListContract extends ICommonContract {
          * 增加一个备忘
          */
         void addMemo();
+
+
 
     }
 }

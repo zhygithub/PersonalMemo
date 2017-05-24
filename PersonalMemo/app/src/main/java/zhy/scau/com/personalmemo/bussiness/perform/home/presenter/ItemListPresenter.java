@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import zhy.scau.com.personalmemo.bussiness.model.MemoItem;
+import zhy.scau.com.personalmemo.bussiness.perform.home.enums.ItemListShowType;
 import zhy.scau.com.personalmemo.core.mvp.IHostControl;
 import zhy.scau.com.personalmemo.core.mvp.common.presenter.CommonPresenter;
 import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IItemsListContract;
@@ -48,6 +49,7 @@ public class ItemListPresenter extends CommonPresenter<IItemsListContract.IItems
         mListMemos.add(new MemoItem());
         getView().addItem(mListMemos.size()-1 , mListMemos);
     }
+
 
     public List<MemoItem> getData() {
         List<MemoItem> data = new ArrayList<>();

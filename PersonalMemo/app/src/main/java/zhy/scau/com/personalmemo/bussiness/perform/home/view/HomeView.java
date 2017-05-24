@@ -109,6 +109,8 @@ public class HomeView extends CommonView<IHomeContract.IHomePresenter> implement
                 Toast.makeText(getActivityContext(), "position = "+position, Toast.LENGTH_SHORT).show();
                 Snackbar.make(view, "haha", Snackbar.LENGTH_SHORT)
                     .setAction("click" , null).show();
+
+                getPresenter().tomatoTime();
             }
         });
     }

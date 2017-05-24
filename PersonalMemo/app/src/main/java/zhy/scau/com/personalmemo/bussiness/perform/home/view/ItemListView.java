@@ -18,6 +18,7 @@ import zhy.scau.com.personalmemo.bussiness.model.MemoItem;
 import zhy.scau.com.personalmemo.bussiness.perform.home.adapter.ItemListAdapter;
 import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IHomeContract;
 import zhy.scau.com.personalmemo.bussiness.perform.home.contract.IItemsListContract;
+import zhy.scau.com.personalmemo.bussiness.perform.home.enums.ItemListShowType;
 import zhy.scau.com.personalmemo.bussiness.perform.home.presenter.ItemListPresenter;
 import zhy.scau.com.personalmemo.core.mvp.IHostControl;
 import zhy.scau.com.personalmemo.core.mvp.common.view.CommonView;
@@ -51,6 +52,8 @@ public class ItemListView extends CommonView<IItemsListContract.IItemsListPresen
         mEvent = new ItemListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+
+                getPresenter().selectMemo(position);
 
                 List<MemoItem> data = mItemListAdapter.getData();
                 MemoItem memoItem = data.get(position);
@@ -114,6 +117,11 @@ public class ItemListView extends CommonView<IItemsListContract.IItemsListPresen
             mItemListAdapter.notifyItemRemoved(position);
             mItemListAdapter.notifyItemRangeChanged(position,data.size());
 
+
+    }
+
+    @Override
+    public void changeShowType(ItemListShowType showType) {
 
     }
 
